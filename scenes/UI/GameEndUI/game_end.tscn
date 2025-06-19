@@ -1,0 +1,195 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfu2vaa1it554"]
+
+[ext_resource type="Script" uid="uid://3k0vku0ln00g" path="res://scenes/UI/GameEndUI/game_end.gd" id="1_h1nht"]
+[ext_resource type="FontFile" uid="uid://kpj005erdbbi" path="res://assets/fonts/static/RobotoMono-ExtraLightItalic.ttf" id="2_j0u4u"]
+[ext_resource type="Texture2D" uid="uid://d4mg5ki56b7n6" path="res://assets/hexagon.png" id="3_ncosf"]
+[ext_resource type="FontFile" uid="uid://bka8tcryaxc2v" path="res://assets/fonts/static/RobotoMono-Medium.ttf" id="4_ncosf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ncosf"]
+texture = ExtResource("3_ncosf")
+
+[node name="GameEnd" type="Control"]
+modulate = Color(1, 1, 1, 0.992157)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h1nht")
+
+[node name="LastLevelLabel" type="Label" parent="."]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -413.0
+offset_top = -394.0
+offset_right = 409.0
+offset_bottom = -347.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_j0u4u")
+theme_override_font_sizes/font_size = 35
+text = "Sorry , It was the last level for now..."
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9413.0
+offset_top = -6140.0
+offset_right = -7493.0
+offset_bottom = -5060.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(10, 10)
+color = Color(0.187176, 0.187176, 0.187176, 1)
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -162.11
+offset_right = 20.0
+offset_bottom = -122.11
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Buttons"]
+custom_minimum_size = Vector2(354.705, 269.245)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = 95.0
+offset_right = 294.0
+offset_bottom = 415.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_ncosf")
+
+[node name="Button" type="Button" parent="Buttons/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.3525
+offset_top = 30.0
+offset_right = -39.6475
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_ncosf")
+theme_override_font_sizes/font_size = 30
+text = "NEXT"
+flat = true
+
+[node name="Panel2" type="Panel" parent="Buttons"]
+custom_minimum_size = Vector2(354.705, 269.245)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = 94.0
+offset_right = 1.0
+offset_bottom = 414.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_ncosf")
+
+[node name="Button2" type="Button" parent="Buttons/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.3525
+offset_top = 27.0
+offset_right = -44.6475
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_ncosf")
+theme_override_font_sizes/font_size = 30
+text = "REPLAY"
+flat = true
+
+[node name="Panel3" type="Panel" parent="Buttons"]
+custom_minimum_size = Vector2(354.705, 269.245)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.007
+offset_top = -172.82
+offset_right = 184.698
+offset_bottom = 151.425
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_ncosf")
+
+[node name="Button3" type="Button" parent="Buttons/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.007
+offset_top = 35.82
+offset_right = -42.993
+offset_bottom = -42.18
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("4_ncosf")
+theme_override_font_sizes/font_size = 30
+text = "MENU"
+flat = true
+
+[node name="DisappearTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DisappearTimer2" type="Timer" parent="."]
+one_shot = true
+
+[node name="DisappearTimer3" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="button_down" from="Buttons/Panel/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Buttons/Panel2/Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="Buttons/Panel3/Button3" to="." method="_on_button_3_button_down"]
+[connection signal="timeout" from="DisappearTimer" to="." method="_on_disappear_timer_timeout"]
+[connection signal="timeout" from="DisappearTimer2" to="." method="_on_disappear_timer_2_timeout"]
+[connection signal="timeout" from="DisappearTimer3" to="." method="_on_disappear_timer_3_timeout"]

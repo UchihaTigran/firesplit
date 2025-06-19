@@ -1,0 +1,143 @@
+[gd_scene load_steps=11 format=4 uid="uid://dt2ncwx8f87xm"]
+
+[ext_resource type="PackedScene" uid="uid://by6c2sdr7dcpm" path="res://scenes/levels/level_base/level_base.tscn" id="1_tkx6k"]
+[ext_resource type="PackedScene" uid="uid://v8jxsckbkoo" path="res://scenes/MagneticBlock/magnetic_block.tscn" id="2_3rsoq"]
+[ext_resource type="FontFile" uid="uid://bka8tcryaxc2v" path="res://assets/fonts/static/RobotoMono-Medium.ttf" id="2_6eswl"]
+[ext_resource type="PackedScene" uid="uid://cdf0ell0guk85" path="res://scenes/MagneticBlock/gpu_particles_2d_push.tscn" id="3_t7w01"]
+[ext_resource type="PackedScene" uid="uid://cysuntso64dql" path="res://scenes/SplitArea/split_area.tscn" id="4_dh8lw"]
+[ext_resource type="PackedScene" uid="uid://cfl0h6ix3sja5" path="res://scenes/targetBlock/target_block.tscn" id="5_0wnux"]
+[ext_resource type="PackedScene" uid="uid://cvpkrph13upmw" path="res://scenes/MagneticBlock/gpu_particles_2d_pulling.tscn" id="6_tvb0e"]
+[ext_resource type="PackedScene" uid="uid://cjfuxb3ga5vie" path="res://scenes/HealthHelper/health_helper.tscn" id="7_ra16i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t7w01"]
+radius = 126.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ra16i"]
+radius = 126.51
+
+[node name="Level9" instance=ExtResource("1_tkx6k")]
+modulate = Color(0.746315, 0.657343, 1.92523e-06, 1)
+level_id = 9
+
+[node name="BG" parent="." index="0"]
+offset_left = -964.0
+offset_top = -547.0
+offset_right = 956.0
+offset_bottom = 533.0
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="." index="1"]
+self_modulate = Color(2, 2, 2, 1)
+offset_left = 106.0
+offset_top = -97.0
+offset_right = 658.0
+offset_bottom = -44.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_6eswl")
+theme_override_font_sizes/font_size = 40
+text = "Do you like the colors?"
+
+[node name="Camera2D" parent="." index="3"]
+position = Vector2(-5, 87)
+zoom = Vector2(2.2, 2.2)
+
+[node name="WorldBoundaries" parent="." index="4"]
+position = Vector2(-17, 97)
+scale = Vector2(1.37, 1.325)
+
+[node name="CollisionShape2D4" parent="WorldBoundaries" index="3"]
+position = Vector2(-256.842, -52.4345)
+
+[node name="SplitArea6" parent="SplitAreas" index="0" instance=ExtResource("4_dh8lw")]
+position = Vector2(57, 42)
+rotate_fire_degrees = 20.0
+
+[node name="SplitArea5" parent="SplitAreas" index="1" instance=ExtResource("4_dh8lw")]
+position = Vector2(28, 42)
+rotate_fire_degrees = 20.0
+
+[node name="SplitArea" parent="SplitAreas" index="2" instance=ExtResource("4_dh8lw")]
+position = Vector2(-85, 41)
+rotate_fire_degrees = 20.0
+
+[node name="SplitArea2" parent="SplitAreas" index="3" instance=ExtResource("4_dh8lw")]
+position = Vector2(-56, 42)
+rotate_fire_degrees = 20.0
+
+[node name="SplitArea3" parent="SplitAreas" index="4" instance=ExtResource("4_dh8lw")]
+position = Vector2(-28, 42)
+rotate_fire_degrees = 20.0
+
+[node name="SplitArea4" parent="SplitAreas" index="5" instance=ExtResource("4_dh8lw")]
+position = Vector2(0, 41)
+rotate_fire_degrees = 20.0
+
+[node name="SplitArea8" parent="SplitAreas" index="6" instance=ExtResource("4_dh8lw")]
+position = Vector2(-42, -33)
+rotate_fire_degrees = 20.0
+
+[node name="SplitArea9" parent="SplitAreas" index="7" instance=ExtResource("4_dh8lw")]
+position = Vector2(-13, -32)
+rotate_fire_degrees = 20.0
+
+[node name="SplitArea10" parent="SplitAreas" index="8" instance=ExtResource("4_dh8lw")]
+position = Vector2(15, -32)
+rotate_fire_degrees = 20.0
+
+[node name="SplitArea11" parent="SplitAreas" index="9" instance=ExtResource("4_dh8lw")]
+position = Vector2(43, -33)
+rotate_fire_degrees = 20.0
+
+[node name="SplitArea7" parent="SplitAreas" index="10" instance=ExtResource("4_dh8lw")]
+position = Vector2(85, 42)
+rotate_fire_degrees = 20.0
+
+[node name="TileMapLayer" parent="." index="7"]
+tile_map_data = PackedByteArray("AAADAAgAAQAAAAAAAAADAAcAAQAAAAAAAAAEAAYAAQAAAAAAAAAEAAUAAQAAAAAAAAD8/wgAAQAAAAAAAAD7/wcAAQAAAAAAAAD7/wYAAQAAAAAAAAD6/wUAAQAAAAAAAAD6/wQAAgAAAAAAAgAFAAQAAgAAAAAAAgD8/wkAAQAAAAAAAAD9/woAAQAAAAAAAAACAAkAAQAAAAAAAAACAAoAAQAAAAAAAAD7/wEAAgAAAAAAAgADAAEAAgAAAAAAAgAEAAIAAgAAAAAAAgAEAAMAAgAAAAAAAgD7/wIAAgAAAAAAAgD6/wMAAgAAAAAAAgD9/wsAAgAAAAAAAgD+/wsAAgAAAAAAAgD//wsAAgAAAAAAAgAAAAsAAgAAAAAAAgABAAsAAgAAAAAAAgA=")
+
+[node name="TargetBlock" parent="TargetBlocks" index="0" instance=ExtResource("5_0wnux")]
+position = Vector2(-56, 189)
+
+[node name="TargetBlock2" parent="TargetBlocks" index="1" instance=ExtResource("5_0wnux")]
+position = Vector2(57, 189)
+
+[node name="StartPosMarker" parent="." index="10"]
+position = Vector2(-299, 5)
+
+[node name="MagneticBlock" parent="MagneticBlocks" index="0" instance=ExtResource("2_3rsoq")]
+position = Vector2(0, -111)
+power = -300.0
+
+[node name="GPUParticles2D" parent="MagneticBlocks/MagneticBlock" index="0" instance=ExtResource("3_t7w01")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagneticBlocks/MagneticBlock" index="1"]
+shape = SubResource("CircleShape2D_t7w01")
+
+[node name="MagneticBlock2" parent="MagneticBlocks" index="1" instance=ExtResource("2_3rsoq")]
+position = Vector2(0, 265)
+power = 200.0
+
+[node name="PullParticles" parent="MagneticBlocks/MagneticBlock2" index="0" instance=ExtResource("6_tvb0e")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagneticBlocks/MagneticBlock2" index="1"]
+shape = SubResource("CircleShape2D_ra16i")
+
+[node name="HealthHelper" parent="HealthHelpers" index="0" instance=ExtResource("7_ra16i")]
+position = Vector2(-55, 5)
+hp = 50.0
+
+[node name="HealthHelper2" parent="HealthHelpers" index="1" instance=ExtResource("7_ra16i")]
+position = Vector2(-30, 5)
+hp = 50.0
+
+[node name="HealthHelper3" parent="HealthHelpers" index="2" instance=ExtResource("7_ra16i")]
+position = Vector2(-2, 5)
+hp = 50.0
+
+[node name="HealthHelper4" parent="HealthHelpers" index="3" instance=ExtResource("7_ra16i")]
+position = Vector2(30, 5)
+hp = 50.0
+
+[node name="HealthHelper5" parent="HealthHelpers" index="4" instance=ExtResource("7_ra16i")]
+position = Vector2(57, 3)
+hp = 50.0

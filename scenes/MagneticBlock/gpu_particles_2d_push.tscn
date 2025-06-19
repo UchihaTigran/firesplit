@@ -1,0 +1,61 @@
+[gd_scene load_steps=13 format=3 uid="uid://cdf0ell0guk85"]
+
+[ext_resource type="Texture2D" uid="uid://bcik4tx4y6gwv" path="res://assets/fire/circle.png" id="1_uttsa"]
+[ext_resource type="Texture2D" uid="uid://d2qv6xalcft4x" path="res://assets/block/fire_destroyer.png" id="2_pyn1h"]
+
+[sub_resource type="Gradient" id="Gradient_pyn1h"]
+colors = PackedColorArray(1, 1, 1, 1, 0.28485, 0.28485, 0.28485, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f1ph3"]
+gradient = SubResource("Gradient_pyn1h")
+
+[sub_resource type="Curve" id="Curve_bcwx7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4gru4"]
+curve = SubResource("Curve_bcwx7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_de42s"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_4gru4")
+color_ramp = SubResource("GradientTexture1D_f1ph3")
+
+[sub_resource type="Gradient" id="Gradient_f1ph3"]
+colors = PackedColorArray(0.23, 0.23, 0.23, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pyn1h"]
+gradient = SubResource("Gradient_f1ph3")
+
+[sub_resource type="Curve" id="Curve_pyn1h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.45359), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f1ph3"]
+curve = SubResource("Curve_pyn1h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4gru4"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 16.22
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 68.85
+radial_accel_max = 68.85
+scale_min = 0.1
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_f1ph3")
+color_initial_ramp = SubResource("GradientTexture1D_pyn1h")
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+modulate = Color(1.2, 1.2, 1.2, 1)
+texture = ExtResource("1_uttsa")
+process_material = SubResource("ParticleProcessMaterial_de42s")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+amount = 16
+texture = ExtResource("2_pyn1h")
+lifetime = 1.2
+process_material = SubResource("ParticleProcessMaterial_4gru4")

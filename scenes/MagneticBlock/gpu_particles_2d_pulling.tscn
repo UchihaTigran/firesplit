@@ -1,0 +1,63 @@
+[gd_scene load_steps=13 format=3 uid="uid://cvpkrph13upmw"]
+
+[ext_resource type="Texture2D" uid="uid://bcik4tx4y6gwv" path="res://assets/fire/circle.png" id="1_hllnu"]
+[ext_resource type="Texture2D" uid="uid://d2qv6xalcft4x" path="res://assets/block/fire_destroyer.png" id="2_dd3bs"]
+
+[sub_resource type="Gradient" id="Gradient_dd3bs"]
+colors = PackedColorArray(1, 1, 1, 1, 0.1, 0.1, 0.1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v5b7b"]
+gradient = SubResource("Gradient_dd3bs")
+
+[sub_resource type="Curve" id="Curve_435hp"]
+_data = [Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rni8o"]
+curve = SubResource("Curve_435hp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3th5p"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_rni8o")
+color_ramp = SubResource("GradientTexture1D_v5b7b")
+
+[sub_resource type="Gradient" id="Gradient_435hp"]
+colors = PackedColorArray(0.23, 0.23, 0.23, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bcwx7"]
+gradient = SubResource("Gradient_435hp")
+
+[sub_resource type="Curve" id="Curve_3th5p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.45359), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f1ph3"]
+curve = SubResource("Curve_3th5p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3j7k6"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 128.0
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -68.85
+radial_accel_max = -68.85
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_f1ph3")
+color_initial_ramp = SubResource("GradientTexture1D_bcwx7")
+
+[node name="PullParticles" type="GPUParticles2D"]
+modulate = Color(1.2, 1.2, 1.2, 1)
+z_index = 5
+texture = ExtResource("1_hllnu")
+draw_order = 2
+process_material = SubResource("ParticleProcessMaterial_3th5p")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+amount = 16
+texture = ExtResource("2_dd3bs")
+lifetime = 1.2
+process_material = SubResource("ParticleProcessMaterial_3j7k6")

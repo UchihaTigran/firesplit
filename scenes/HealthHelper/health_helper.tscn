@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://cjfuxb3ga5vie"]
+
+[ext_resource type="Texture2D" uid="uid://bcik4tx4y6gwv" path="res://assets/fire/circle.png" id="1_dss38"]
+[ext_resource type="Script" uid="uid://dpyaqwiiqrtw" path="res://scenes/HealthHelper/health_helper.gd" id="1_g8t7x"]
+
+[sub_resource type="Gradient" id="Gradient_g8t7x"]
+colors = PackedColorArray(1, 1, 0.603922, 1, 0.321569, 0.0901961, 0.0901961, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jha55"]
+gradient = SubResource("Gradient_g8t7x")
+
+[sub_resource type="Curve" id="Curve_27htr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wrrsi"]
+curve = SubResource("Curve_27htr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_skrb3"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 33.9
+initial_velocity_max = 33.9
+gravity = Vector3(0, -30, 0)
+scale_min = 0.4
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_wrrsi")
+color_ramp = SubResource("GradientTexture1D_jha55")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dss38"]
+radius = 7.07107
+
+[node name="HealthHelper" type="Area2D"]
+modulate = Color(1.5, 1.5, 1.5, 1)
+collision_layer = 256
+collision_mask = 32
+script = ExtResource("1_g8t7x")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 12
+texture = ExtResource("1_dss38")
+process_material = SubResource("ParticleProcessMaterial_skrb3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_dss38")
+
+[node name="disappearTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="disappearTimer" to="." method="_on_disappear_timer_timeout"]

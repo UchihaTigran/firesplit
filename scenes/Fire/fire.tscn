@@ -1,0 +1,105 @@
+[gd_scene load_steps=14 format=3 uid="uid://gk1dugcrfg63"]
+
+[ext_resource type="Script" uid="uid://doomvvhlryysr" path="res://scenes/Fire/fire.gd" id="1_cpaln"]
+[ext_resource type="Texture2D" uid="uid://bcik4tx4y6gwv" path="res://assets/fire/circle.png" id="1_kfvih"]
+[ext_resource type="FontFile" uid="uid://bka8tcryaxc2v" path="res://assets/fonts/static/RobotoMono-Medium.ttf" id="3_8456l"]
+[ext_resource type="Script" uid="uid://1rv1lman45yi" path="res://scenes/Fire/hitbox.gd" id="4_t7j4c"]
+[ext_resource type="AudioStream" uid="uid://cyulixhakeqf4" path="res://assets/fire_default/sword-clash-1.mp3" id="5_l1puj"]
+[ext_resource type="AudioStream" uid="uid://3mdm5ppensu4" path="res://assets/fire_default/swords-clash-2.mp3" id="6_qvm2x"]
+[ext_resource type="AudioStream" uid="uid://dbsyylqrckeik" path="res://assets/fire_default/slash-21834.mp3" id="7_up4mw"]
+[ext_resource type="AudioStream" uid="uid://derhd204a7he6" path="res://assets/fire_default/disappear.mp3" id="8_ekm4o"]
+
+[sub_resource type="Curve" id="Curve_8456l"]
+_data = [Vector2(0, 0.919727), 0.0, 0.0, 0, 0, Vector2(0.929412, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_cpaln"]
+offsets = PackedFloat32Array(0.0133333, 0.76)
+colors = PackedColorArray(1, 1, 0.568627, 1, 0.278431, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kfvih"]
+radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cpaln"]
+radius = 9.05539
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8456l"]
+radius = 14.4425
+
+[node name="Fire" type="CharacterBody2D"]
+modulate = Color(2, 2, 2, 1)
+scale = Vector2(1.11, 1.11)
+collision_mask = 2
+motion_mode = 1
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_block_on_wall = false
+script = ExtResource("1_cpaln")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 16
+texture = ExtResource("1_kfvih")
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector2(0, -280)
+scale_amount_curve = SubResource("Curve_8456l")
+color_ramp = SubResource("Gradient_cpaln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_kfvih")
+
+[node name="Area2D" type="Area2D" parent="CollisionShape2D"]
+position = Vector2(1, 0)
+collision_mask = 28
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_cpaln")
+
+[node name="DisappearTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="HPLabel" type="Label" parent="."]
+visible = false
+offset_top = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_8456l")
+theme_override_font_sizes/font_size = 20
+text = "hp"
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 64
+script = ExtResource("4_t7j4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.900901, 0)
+shape = SubResource("CircleShape2D_8456l")
+
+[node name="CollisionsSound1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_l1puj")
+volume_db = -17.726
+
+[node name="CollisionsSound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_qvm2x")
+
+[node name="FireSplittingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_up4mw")
+volume_db = -7.013
+
+[node name="DisappearSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ekm4o")
+volume_db = -7.013
+
+[connection signal="area_entered" from="CollisionShape2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="CollisionShape2D/Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="DisappearTimer" to="." method="_on_disappear_timer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="collision_with_physics_blocks" from="Hitbox" to="." method="_on_hitbox_collision_with_physics_blocks"]
+[connection signal="health_helper_take" from="Hitbox" to="." method="_on_hitbox_health_helper_take"]

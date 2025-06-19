@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=4 uid="uid://bfftww6nlp0uj"]
+
+[ext_resource type="PackedScene" uid="uid://by6c2sdr7dcpm" path="res://scenes/levels/level_base/level_base.tscn" id="1_n4e8l"]
+[ext_resource type="PackedScene" uid="uid://v8jxsckbkoo" path="res://scenes/MagneticBlock/magnetic_block.tscn" id="2_00svg"]
+[ext_resource type="FontFile" uid="uid://bka8tcryaxc2v" path="res://assets/fonts/static/RobotoMono-Medium.ttf" id="2_3duju"]
+[ext_resource type="PackedScene" uid="uid://cvpkrph13upmw" path="res://scenes/MagneticBlock/gpu_particles_2d_pulling.tscn" id="3_qnpqp"]
+[ext_resource type="PackedScene" uid="uid://cysuntso64dql" path="res://scenes/SplitArea/split_area.tscn" id="4_5v82g"]
+[ext_resource type="PackedScene" uid="uid://cfl0h6ix3sja5" path="res://scenes/targetBlock/target_block.tscn" id="5_g8yr4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qnpqp"]
+radius = 113.0
+
+[node name="LevelBase" instance=ExtResource("1_n4e8l")]
+modulate = Color(0.827956, 0, 0.286487, 1)
+level_id = 4
+
+[node name="BG" parent="." index="0"]
+offset_left = -3518.0
+offset_top = -2229.0
+offset_right = -1598.0
+offset_bottom = -1149.0
+scale = Vector2(10, 10)
+
+[node name="Label" type="Label" parent="." index="1"]
+modulate = Color(2, 2, 2, 1)
+offset_left = -244.0
+offset_top = -213.0
+offset_right = 572.0
+offset_bottom = -158.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_3duju")
+theme_override_font_sizes/font_size = 40
+text = "This thing pulls you to its center"
+
+[node name="Camera2D" parent="." index="3"]
+position = Vector2(-25.6, 0)
+
+[node name="WorldBoundaries" parent="." index="4"]
+position = Vector2(-20, 0)
+scale = Vector2(0.9, 1.19)
+
+[node name="SplitArea" parent="SplitAreas" index="0" instance=ExtResource("4_5v82g")]
+position = Vector2(-98, 65)
+rotate_fire_degrees = 50.0
+
+[node name="SplitArea3" parent="SplitAreas" index="1" instance=ExtResource("4_5v82g")]
+position = Vector2(-98, -81)
+rotate_fire_degrees = 30.0
+
+[node name="SplitArea5" parent="SplitAreas" index="2" instance=ExtResource("4_5v82g")]
+position = Vector2(28, -8)
+rotate_fire_degrees = 30.0
+
+[node name="TileMapLayer" parent="." index="7"]
+tile_map_data = PackedByteArray("AAACAP//AgAAAAAAAgD7//r/AgAAAAAAAgAAAPr/AgAAAAAAAgD4////AgAAAAAAAgAAAAQAAgAAAAAAAgD5//7/AQAAAAAAAAD5//3/AQAAAAAAAAD6//z/AQAAAAAAAAD6//v/AQAAAAAAAAD8//r/AQAAAAAAAAD9//r/AQAAAAAAAAD+//r/AQAAAAAAAAD///r/AQAAAAAAAAAAAPv/AQAAAAAAAAABAPz/AQAAAAAAAAABAP3/AQAAAAAAAAACAP7/AQAAAAAAAAAAAAMAAQAAAAAAAAABAAIAAQAAAAAAAAABAAEAAQAAAAAAAAACAAAAAQAAAAAAAAD5/wAAAQAAAAAAAAD5/wEAAQAAAAAAAAD+/wQAAQAAAAAAAAD//wQAAQAAAAAAAAD6//r/AgAAAAAAAgD7//n/AgAAAAAAAgD6//n/AgAAAAAAAgD///n/AgAAAAAAAgAAAPn/AgAAAAAAAgABAPr/AgAAAAAAAgD4//7/AgAAAAAAAgD3////AgAAAAAAAgD4/wAAAgAAAAAAAgADAP7/AgAAAAAAAgADAP//AgAAAAAAAgADAAAAAgAAAAAAAgD//wUAAgAAAAAAAgAAAAUAAgAAAAAAAgABAAQAAgAAAAAAAgA=")
+metadata/_edit_lock_ = true
+
+[node name="TargetBlock" parent="TargetBlocks" index="0" instance=ExtResource("5_g8yr4")]
+position = Vector2(-42, -32)
+max_hp = 5.0
+
+[node name="TargetBlock2" parent="TargetBlocks" index="1" instance=ExtResource("5_g8yr4")]
+position = Vector2(-42, 16)
+max_hp = 2.0
+
+[node name="TargetBlock3" parent="TargetBlocks" index="2" instance=ExtResource("5_g8yr4")]
+position = Vector2(-84, -8)
+max_hp = 2.0
+
+[node name="StartPosMarker" parent="." index="10"]
+position = Vector2(-168, 185)
+
+[node name="MagneticBlock" parent="MagneticBlocks" index="0" instance=ExtResource("2_00svg")]
+position = Vector2(-56.445, -7.38)
+priority = 4
+power = 250.0
+metadata/_edit_lock_ = true
+
+[node name="PullParticles" parent="MagneticBlocks/MagneticBlock" index="0" instance=ExtResource("3_qnpqp")]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagneticBlocks/MagneticBlock" index="1"]
+shape = SubResource("CircleShape2D_qnpqp")
+metadata/_edit_lock_ = true

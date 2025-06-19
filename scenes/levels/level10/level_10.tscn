@@ -1,0 +1,125 @@
+[gd_scene load_steps=6 format=4 uid="uid://dvk0jbu4ed750"]
+
+[ext_resource type="PackedScene" uid="uid://by6c2sdr7dcpm" path="res://scenes/levels/level_base/level_base.tscn" id="1_uemx8"]
+[ext_resource type="FontFile" uid="uid://bka8tcryaxc2v" path="res://assets/fonts/static/RobotoMono-Medium.ttf" id="2_xjsk2"]
+[ext_resource type="PackedScene" uid="uid://cfl0h6ix3sja5" path="res://scenes/targetBlock/target_block.tscn" id="4_i3n85"]
+[ext_resource type="PackedScene" uid="uid://cysuntso64dql" path="res://scenes/SplitArea/split_area.tscn" id="5_xjsk2"]
+[ext_resource type="PackedScene" uid="uid://cjfuxb3ga5vie" path="res://scenes/HealthHelper/health_helper.tscn" id="6_sucbe"]
+
+[node name="LevelBase" instance=ExtResource("1_uemx8")]
+modulate = Color(0.000399293, 0.270284, 0.856095, 1)
+level_id = 10
+
+[node name="BG" parent="." index="0"]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="." index="1"]
+self_modulate = Color(3, 3, 3, 1)
+offset_left = 202.0
+offset_top = -209.0
+offset_right = 330.0
+offset_bottom = -186.0
+scale = Vector2(0.45, 0.45)
+theme_override_fonts/font = ExtResource("2_xjsk2")
+theme_override_font_sizes/font_size = 40
+text = "There's a secret"
+
+[node name="WorldBoundaries" parent="." index="4"]
+scale = Vector2(1.405, 1.215)
+
+[node name="SplitArea" parent="SplitAreas" index="0" instance=ExtResource("5_xjsk2")]
+position = Vector2(-28, -57)
+rotate_fire_degrees = 120.0
+
+[node name="SplitArea2" parent="SplitAreas" index="1" instance=ExtResource("5_xjsk2")]
+position = Vector2(29, -57)
+rotate_fire_degrees = 60.0
+
+[node name="SplitArea3" parent="SplitAreas" index="2" instance=ExtResource("5_xjsk2")]
+position = Vector2(57, -8)
+rotate_fire_degrees = 60.0
+
+[node name="SplitArea4" parent="SplitAreas" index="3" instance=ExtResource("5_xjsk2")]
+position = Vector2(29, 41)
+rotate_fire_degrees = 60.0
+
+[node name="SplitArea5" parent="SplitAreas" index="4" instance=ExtResource("5_xjsk2")]
+position = Vector2(-28, 41)
+rotate_fire_degrees = 60.0
+
+[node name="SplitArea6" parent="SplitAreas" index="5" instance=ExtResource("5_xjsk2")]
+position = Vector2(-56, -8)
+rotate_fire_degrees = 60.0
+
+[node name="TileMapLayer" parent="." index="7"]
+tile_map_data = PackedByteArray("AAD7//b/AgAAAAAAAgD8//b/AgAAAAAAAgD///b/AgAAAAAAAgAAAPb/AgAAAAAAAgADAPb/AgAAAAAAAgAEAPb/AgAAAAAAAgAEAPf/AgAAAAAAAgAGAPr/AgAAAAAAAgAGAPv/AgAAAAAAAgAIAP7/AgAAAAAAAgAIAP//AgAAAAAAAgAIAAAAAgAAAAAAAgAGAAMAAgAAAAAAAgAGAAQAAgAAAAAAAgAEAAcAAgAAAAAAAgADAAgAAgAAAAAAAgAAAAgAAgAAAAAAAgD//wgAAgAAAAAAAgD8/wgAAgAAAAAAAgD7/wgAAgAAAAAAAgD6/wcAAgAAAAAAAgD5/wQAAgAAAAAAAgD4/wMAAgAAAAAAAgD3/wAAAgAAAAAAAgD2////AgAAAAAAAgD3//7/AgAAAAAAAgD4//v/AgAAAAAAAgD5//r/AgAAAAAAAgD6//f/AgAAAAAAAgD2//7/AgAAAAAAAgD1////AgAAAAAAAgD2/wAAAgAAAAAAAgD7//X/AgAAAAAAAgD6//X/AgAAAAAAAgD6//b/AgAAAAAAAgADAPX/AgAAAAAAAgAEAPX/AgAAAAAAAgAFAPb/AgAAAAAAAgAJAP7/AgAAAAAAAgAJAP//AgAAAAAAAgAJAAAAAgAAAAAAAgAEAAgAAgAAAAAAAgADAAkAAgAAAAAAAgAEAAkAAgAAAAAAAgAFAAgAAgAAAAAAAgD6/wgAAgAAAAAAAgD6/wkAAgAAAAAAAgD7/wkAAgAAAAAAAgD4//r/AgAAAAAAAgD4//n/AgAAAAAAAgD3//v/AgAAAAAAAgD+//X/AgAAAAAAAgD///X/AgAAAAAAAgAAAPX/AgAAAAAAAgAGAPn/AgAAAAAAAgAHAPr/AgAAAAAAAgAHAPv/AgAAAAAAAgAHAAMAAgAAAAAAAgAHAAQAAgAAAAAAAgAGAAUAAgAAAAAAAgD+/wkAAgAAAAAAAgD//wkAAgAAAAAAAgAAAAkAAgAAAAAAAgD3/wMAAgAAAAAAAgD4/wUAAgAAAAAAAgD4/wQAAgAAAAAAAgD5/wMAAgAAAAAAAgD5//v/AgAAAAAAAgD///f/AgAAAAAAAgAFAPv/AgAAAAAAAgAFAAMAAgAAAAAAAgD//wcAAgAAAAAAAgD3////AgAAAAAAAgD7/wcAAgAAAAAAAgADAAcAAgAAAAAAAgAHAP//AgAAAAAAAgADAPf/AgAAAAAAAgD7//f/AgAAAAAAAgD3/wEAAQAAAAAAAAD4/wIAAQAAAAAAAAD3//3/AQAAAAAAAAD4//z/AQAAAAAAAAD5//n/AQAAAAAAAAD6//j/AQAAAAAAAAD9//b/AQAAAAAAAAD+//b/AQAAAAAAAAABAPb/AQAAAAAAAAACAPb/AQAAAAAAAAAFAPj/AQAAAAAAAAAFAPn/AQAAAAAAAAAHAPz/AQAAAAAAAAAHAP3/AQAAAAAAAAAHAAIAAQAAAAAAAAAHAAEAAQAAAAAAAAAFAAYAAQAAAAAAAAAFAAUAAQAAAAAAAAABAAgAAQAAAAAAAAACAAgAAQAAAAAAAAD9/wgAAQAAAAAAAAD+/wgAAQAAAAAAAAD5/wUAAQAAAAAAAAD6/wYAAQAAAAAAAAD8//3/AQAAAAAAAAACAP3/AQAAAAAAAAD//wMAAQAAAAAAAAD8/wEAAQAAAAAAAAACAAEAAQAAAAAAAAD///v/AQAAAAAAAAA=")
+
+[node name="TargetBlock" parent="TargetBlocks" index="0" instance=ExtResource("4_i3n85")]
+position = Vector2(-170, -9)
+
+[node name="TargetBlock2" parent="TargetBlocks" index="1" instance=ExtResource("4_i3n85")]
+position = Vector2(-84, 139)
+
+[node name="TargetBlock3" parent="TargetBlocks" index="2" instance=ExtResource("4_i3n85")]
+position = Vector2(85, 139)
+
+[node name="TargetBlock4" parent="TargetBlocks" index="3" instance=ExtResource("4_i3n85")]
+position = Vector2(170, -9)
+
+[node name="TargetBlock5" parent="TargetBlocks" index="4" instance=ExtResource("4_i3n85")]
+position = Vector2(85, -157)
+
+[node name="StartPosMarker" parent="." index="10"]
+position = Vector2(0, -7)
+
+[node name="HealthHelper11" parent="HealthHelpers" index="0" instance=ExtResource("6_sucbe")]
+position = Vector2(-56, 92)
+hp = 50.0
+
+[node name="HealthHelper12" parent="HealthHelpers" index="1" instance=ExtResource("6_sucbe")]
+position = Vector2(57, 92)
+hp = 50.0
+
+[node name="HealthHelper13" parent="HealthHelpers" index="2" instance=ExtResource("6_sucbe")]
+position = Vector2(114, -8)
+hp = 50.0
+
+[node name="HealthHelper14" parent="HealthHelpers" index="3" instance=ExtResource("6_sucbe")]
+position = Vector2(57, -106)
+hp = 50.0
+
+[node name="HealthHelper15" parent="HealthHelpers" index="4" instance=ExtResource("6_sucbe")]
+position = Vector2(-56, -106)
+hp = 50.0
+
+[node name="HealthHelper17" parent="HealthHelpers" index="5" instance=ExtResource("6_sucbe")]
+position = Vector2(-45, -32)
+hp = 50.0
+
+[node name="HealthHelper18" parent="HealthHelpers" index="6" instance=ExtResource("6_sucbe")]
+position = Vector2(0, -57)
+hp = 50.0
+
+[node name="HealthHelper19" parent="HealthHelpers" index="7" instance=ExtResource("6_sucbe")]
+position = Vector2(43, -32)
+hp = 50.0
+
+[node name="HealthHelper20" parent="HealthHelpers" index="8" instance=ExtResource("6_sucbe")]
+position = Vector2(44, 17)
+hp = 50.0
+
+[node name="HealthHelper21" parent="HealthHelpers" index="9" instance=ExtResource("6_sucbe")]
+position = Vector2(0, 41)
+hp = 50.0
+
+[node name="HealthHelper22" parent="HealthHelpers" index="10" instance=ExtResource("6_sucbe")]
+position = Vector2(-43, 18)
+hp = 50.0
+
+[node name="HealthHelper16" parent="HealthHelpers" index="11" instance=ExtResource("6_sucbe")]
+position = Vector2(-113, -6)
+hp = 50.0

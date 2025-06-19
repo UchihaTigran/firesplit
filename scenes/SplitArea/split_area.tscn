@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cysuntso64dql"]
+
+[ext_resource type="Script" uid="uid://cvq7dxihs8apd" path="res://scenes/SplitArea/split_area.gd" id="1_fv5qp"]
+[ext_resource type="Texture2D" uid="uid://bgw8lmettorm5" path="res://assets/block/splitBlock.png" id="2_t2oky"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v7vxj"]
+radius = 14.0357
+
+[node name="SplitArea" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_fv5qp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v7vxj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.112, 0.112)
+texture = ExtResource("2_t2oky")

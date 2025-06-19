@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=4 uid="uid://c5jybckbafcrk"]
+
+[ext_resource type="PackedScene" uid="uid://by6c2sdr7dcpm" path="res://scenes/levels/level_base/level_base.tscn" id="1_rqoth"]
+[ext_resource type="PackedScene" uid="uid://cysuntso64dql" path="res://scenes/SplitArea/split_area.tscn" id="2_fr32t"]
+[ext_resource type="PackedScene" uid="uid://cjfuxb3ga5vie" path="res://scenes/HealthHelper/health_helper.tscn" id="3_5nalg"]
+[ext_resource type="PackedScene" uid="uid://cfl0h6ix3sja5" path="res://scenes/targetBlock/target_block.tscn" id="3_rs5ec"]
+[ext_resource type="FontFile" uid="uid://bka8tcryaxc2v" path="res://assets/fonts/static/RobotoMono-Medium.ttf" id="5_abgtm"]
+
+[node name="Level8" instance=ExtResource("1_rqoth")]
+modulate = Color(0.748744, 0.506624, 0.782061, 1)
+level_id = 8
+
+[node name="Label" type="Label" parent="." index="1"]
+self_modulate = Color(2, 2, 2, 1)
+offset_left = 196.0
+offset_top = 151.0
+offset_right = 604.0
+offset_bottom = 204.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("5_abgtm")
+theme_override_font_sizes/font_size = 40
+text = "Not a ChatGPT fan"
+
+[node name="WorldBoundaries" parent="." index="4"]
+scale = Vector2(1.4, 1.22)
+
+[node name="SplitArea" parent="SplitAreas" index="0" instance=ExtResource("2_fr32t")]
+position = Vector2(-84, -57)
+rotate_fire_degrees = 60.0
+
+[node name="SplitArea2" parent="SplitAreas" index="1" instance=ExtResource("2_fr32t")]
+position = Vector2(0, -107)
+rotate_fire_degrees = 60.0
+
+[node name="SplitArea3" parent="SplitAreas" index="2" instance=ExtResource("2_fr32t")]
+position = Vector2(85, -57)
+rotate_fire_degrees = 60.0
+
+[node name="SplitArea4" parent="SplitAreas" index="3" instance=ExtResource("2_fr32t")]
+position = Vector2(85, 41)
+rotate_fire_degrees = 60.0
+
+[node name="SplitArea5" parent="SplitAreas" index="4" instance=ExtResource("2_fr32t")]
+position = Vector2(0, 90)
+rotate_fire_degrees = 60.0
+
+[node name="SplitArea6" parent="SplitAreas" index="5" instance=ExtResource("2_fr32t")]
+position = Vector2(-84, 42)
+rotate_fire_degrees = 60.0
+
+[node name="TileMapLayer" parent="." index="7"]
+self_modulate = Color(1.2, 1.2, 1.2, 1)
+tile_map_data = PackedByteArray("AAD4//z/AQAAAAAAAAD4//v/AQAAAAAAAAD5//r/AQAAAAAAAAD5//n/AQAAAAAAAAD6//j/AQAAAAAAAAD6//f/AgAAAAAAAgD7//b/AgAAAAAAAgD8//b/AgAAAAAAAgD9//b/AQAAAAAAAAD+//b/AQAAAAAAAAD///b/AQAAAAAAAAAAAPb/AQAAAAAAAAABAPb/AQAAAAAAAAACAPb/AQAAAAAAAAADAPb/AgAAAAAAAgAEAPb/AgAAAAAAAgAEAPf/AgAAAAAAAgAFAPj/AQAAAAAAAAAFAPn/AQAAAAAAAAAGAPr/AQAAAAAAAAAGAPv/AQAAAAAAAAAHAPz/AQAAAAAAAAAHAP3/AQAAAAAAAAAIAP7/AgAAAAAAAgAIAP//AgAAAAAAAgAIAAAAAgAAAAAAAgAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAAFAAUAAQAAAAAAAAAFAAYAAQAAAAAAAAAEAAcAAgAAAAAAAgAEAAgAAgAAAAAAAgADAAgAAgAAAAAAAgACAAgAAQAAAAAAAAABAAgAAQAAAAAAAAAAAAgAAQAAAAAAAAD//wgAAQAAAAAAAAD+/wgAAQAAAAAAAAD9/wgAAQAAAAAAAAD8/wgAAgAAAAAAAgD7/wgAAgAAAAAAAgD6/wcAAgAAAAAAAgD6/wYAAQAAAAAAAAD5/wUAAQAAAAAAAAD5/wQAAQAAAAAAAAD4/wMAAQAAAAAAAAD4/wIAAQAAAAAAAAD3//3/AQAAAAAAAAD3/wEAAQAAAAAAAAD3/wAAAgAAAAAAAgD2////AgAAAAAAAgD3//7/AgAAAAAAAgD+////AgAAAAAAAgD///7/AgAAAAAAAgAAAP7/AgAAAAAAAgAAAP//AgAAAAAAAgAAAAAAAgAAAAAAAgD//wAAAgAAAAAAAgD/////AgAAAAAAAgD4/wEAAQAAAAAAAAD5/wEAAQAAAAAAAAD6/wAAAQAAAAAAAAD6////AQAAAAAAAAD7//7/AQAAAAAAAAD6//n/AQAAAAAAAAD7//r/AQAAAAAAAAD8//r/AQAAAAAAAAD9//r/AQAAAAAAAAD+//r/AQAAAAAAAAABAPf/AQAAAAAAAAABAPj/AQAAAAAAAAABAPn/AQAAAAAAAAACAPr/AQAAAAAAAAACAPv/AQAAAAAAAAAGAP3/AQAAAAAAAAAFAP3/AQAAAAAAAAAFAP7/AQAAAAAAAAAEAP//AQAAAAAAAAAEAAAAAQAAAAAAAAAEAAUAAQAAAAAAAAAEAAQAAQAAAAAAAAADAAQAAQAAAAAAAAACAAQAAQAAAAAAAAABAAQAAQAAAAAAAAD9/wcAAQAAAAAAAAD+/wYAAQAAAAAAAAD9/wUAAQAAAAAAAAD9/wQAAQAAAAAAAAD8/wMAAQAAAAAAAAD6//r/AQAAAAAAAAAAAPf/AQAAAAAAAAAGAPz/AQAAAAAAAAAFAAQAAQAAAAAAAAD+/wcAAQAAAAAAAAD5/wIAAQAAAAAAAAA=")
+
+[node name="TargetBlock" parent="TargetBlocks" index="0" instance=ExtResource("3_rs5ec")]
+position = Vector2(-99, -181)
+
+[node name="TargetBlock2" parent="TargetBlocks" index="1" instance=ExtResource("3_rs5ec")]
+position = Vector2(99, -182)
+
+[node name="TargetBlock3" parent="TargetBlocks" index="2" instance=ExtResource("3_rs5ec")]
+position = Vector2(198, -9)
+
+[node name="TargetBlock4" parent="TargetBlocks" index="3" instance=ExtResource("3_rs5ec")]
+position = Vector2(99, 163)
+
+[node name="TargetBlock5" parent="TargetBlocks" index="4" instance=ExtResource("3_rs5ec")]
+position = Vector2(-98, 164)
+
+[node name="TargetBlock6" parent="TargetBlocks" index="5" instance=ExtResource("3_rs5ec")]
+position = Vector2(-198, -9)
+
+[node name="StartPosMarker" parent="." index="10"]
+position = Vector2(-82, -8)
+
+[node name="HealthHelper" parent="HealthHelpers" index="0" instance=ExtResource("3_5nalg")]
+position = Vector2(-42, 68)
+hp = 100.0
+
+[node name="HealthHelper2" parent="HealthHelpers" index="1" instance=ExtResource("3_5nalg")]
+position = Vector2(44, 66)
+hp = 100.0
+
+[node name="HealthHelper3" parent="HealthHelpers" index="2" instance=ExtResource("3_5nalg")]
+position = Vector2(83, -4)
+hp = 100.0
+
+[node name="HealthHelper4" parent="HealthHelpers" index="3" instance=ExtResource("3_5nalg")]
+position = Vector2(44, -77)
+hp = 100.0
+
+[node name="HealthHelper5" parent="HealthHelpers" index="4" instance=ExtResource("3_5nalg")]
+position = Vector2(-41, -78)
+hp = 100.0

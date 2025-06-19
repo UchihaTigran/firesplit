@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=4 uid="uid://cr733cp0ldn78"]
+
+[ext_resource type="PackedScene" uid="uid://by6c2sdr7dcpm" path="res://scenes/levels/level_base/level_base.tscn" id="1_mcur1"]
+[ext_resource type="PackedScene" uid="uid://cysuntso64dql" path="res://scenes/SplitArea/split_area.tscn" id="2_07j7b"]
+[ext_resource type="PackedScene" uid="uid://cfl0h6ix3sja5" path="res://scenes/targetBlock/target_block.tscn" id="3_231dq"]
+[ext_resource type="FontFile" uid="uid://bka8tcryaxc2v" path="res://assets/fonts/static/RobotoMono-Medium.ttf" id="4_07j7b"]
+
+[node name="Level2" instance=ExtResource("1_mcur1")]
+modulate = Color(0, 0.657196, 0.313986, 1)
+level_id = 2
+
+[node name="BG" parent="." index="0"]
+offset_left = -735.0
+offset_top = -584.0
+offset_right = 1185.0
+offset_bottom = 496.0
+
+[node name="Label" type="Label" parent="." index="1"]
+self_modulate = Color(2, 2, 2, 1)
+offset_left = -140.0
+offset_top = -115.0
+offset_right = 556.0
+offset_bottom = -62.0
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("4_07j7b")
+theme_override_font_sizes/font_size = 40
+text = "They can be split recurisvely"
+
+[node name="Camera2D" parent="." index="3"]
+zoom = Vector2(2.305, 2.305)
+
+[node name="StopButton" parent="Camera2D" index="1"]
+offset_left = -387.0
+offset_top = -212.0
+offset_right = -88.0
+offset_bottom = 45.0
+
+[node name="WorldBoundaries" parent="." index="4"]
+scale = Vector2(1.29, 0.765)
+
+[node name="CollisionShape2D" parent="WorldBoundaries" index="0"]
+position = Vector2(0, -200)
+
+[node name="CollisionShape2D2" parent="WorldBoundaries" index="1"]
+position = Vector2(0, 200)
+
+[node name="CollisionShape2D3" parent="WorldBoundaries" index="2"]
+position = Vector2(250, 0)
+
+[node name="CollisionShape2D4" parent="WorldBoundaries" index="3"]
+position = Vector2(-250, 0)
+
+[node name="SplitArea2" parent="SplitAreas" index="0" instance=ExtResource("2_07j7b")]
+position = Vector2(-140, -56)
+
+[node name="SplitArea5" parent="SplitAreas" index="1" instance=ExtResource("2_07j7b")]
+position = Vector2(140, -56)
+
+[node name="SplitArea7" parent="SplitAreas" index="2" instance=ExtResource("2_07j7b")]
+position = Vector2(0, -56)
+
+[node name="TileMapLayer" parent="." index="7"]
+tile_map_data = PackedByteArray("AAD9/wMAAQAAAAAAAAD+/wIAAQAAAAAAAAD9/wEAAQAAAAAAAAD+/wAAAQAAAAAAAAABAAMAAQAAAAAAAAABAAIAAQAAAAAAAAABAAEAAQAAAAAAAAABAAAAAQAAAAAAAAD9////AQAAAAAAAAABAP//AQAAAAAAAAACAAMAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAAMAAQAAAAAAAAAHAAMAAQAAAAAAAAAIAAMAAQAAAAAAAAAJAAMAAQAAAAAAAAD8/wMAAQAAAAAAAAD7/wMAAQAAAAAAAAD6/wMAAQAAAAAAAAD5/wMAAQAAAAAAAAD4/wMAAQAAAAAAAAD3/wMAAQAAAAAAAAD2/wMAAQAAAAAAAAD1/wMAAQAAAAAAAAD0/wMAAQAAAAAAAADz/wMAAQAAAAAAAADy/wMAAQAAAAAAAAAKAAMAAQAAAAAAAAALAAMAAQAAAAAAAAANAAMAAQAAAAAAAAAMAAMAAQAAAAAAAADx/wMAAQAAAAAAAADu/wMAAQAAAAAAAADv/wMAAQAAAAAAAADw/wMAAQAAAAAAAADr/wMAAQAAAAAAAADs/wMAAQAAAAAAAADt/wMAAQAAAAAAAAAOAAMAAQAAAAAAAAAPAAMAAQAAAAAAAAAQAAMAAQAAAAAAAAARAAMAAQAAAAAAAAA=")
+metadata/_edit_lock_ = true
+
+[node name="TargetBlock" parent="TargetBlocks" index="0" instance=ExtResource("3_231dq")]
+position = Vector2(-140, 40)
+
+[node name="TargetBlock2" parent="TargetBlocks" index="1" instance=ExtResource("3_231dq")]
+position = Vector2(-140, -152)
+
+[node name="TargetBlock3" parent="TargetBlocks" index="2" instance=ExtResource("3_231dq")]
+position = Vector2(140, -152)
+
+[node name="TargetBlock4" parent="TargetBlocks" index="3" instance=ExtResource("3_231dq")]
+position = Vector2(140, 40)
+
+[node name="StartPosMarker" parent="." index="10"]
+position = Vector2(0, 154)

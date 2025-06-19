@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=4 uid="uid://cu1llel1nxvqx"]
+
+[ext_resource type="PackedScene" uid="uid://by6c2sdr7dcpm" path="res://scenes/levels/level_base/level_base.tscn" id="1_u510t"]
+[ext_resource type="PackedScene" uid="uid://cysuntso64dql" path="res://scenes/SplitArea/split_area.tscn" id="2_1n7rd"]
+[ext_resource type="FontFile" uid="uid://bka8tcryaxc2v" path="res://assets/fonts/static/RobotoMono-Medium.ttf" id="2_2e1ef"]
+[ext_resource type="PackedScene" uid="uid://v8jxsckbkoo" path="res://scenes/MagneticBlock/magnetic_block.tscn" id="2_kstfd"]
+[ext_resource type="PackedScene" uid="uid://cvpkrph13upmw" path="res://scenes/MagneticBlock/gpu_particles_2d_pulling.tscn" id="3_k1ym2"]
+[ext_resource type="PackedScene" uid="uid://cjfuxb3ga5vie" path="res://scenes/HealthHelper/health_helper.tscn" id="5_set52"]
+[ext_resource type="PackedScene" uid="uid://cfl0h6ix3sja5" path="res://scenes/targetBlock/target_block.tscn" id="6_kaxm4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1n7rd"]
+radius = 269.119
+
+[node name="Level7" instance=ExtResource("1_u510t")]
+modulate = Color(0.163867, 0.902909, 0.837486, 1)
+level_id = 7
+
+[node name="BG" parent="." index="0"]
+offset_left = -910.0
+offset_top = -563.0
+offset_right = 1010.0
+offset_bottom = 517.0
+
+[node name="Label" type="Label" parent="." index="1"]
+modulate = Color(2, 2, 2, 1)
+offset_left = -339.0
+offset_top = -110.0
+offset_right = -255.0
+offset_bottom = -87.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("2_2e1ef")
+theme_override_font_sizes/font_size = 40
+text = "Kinda easy"
+
+[node name="WorldBoundaries" parent="." index="4"]
+scale = Vector2(1.42, 1.315)
+
+[node name="SplitArea" parent="SplitAreas" index="0" instance=ExtResource("2_1n7rd")]
+position = Vector2(-168, -8)
+rotate_fire_degrees = 10.0
+
+[node name="SplitArea2" parent="SplitAreas" index="1" instance=ExtResource("2_1n7rd")]
+position = Vector2(98, -32)
+rotate_fire_degrees = 10.0
+
+[node name="TileMapLayer" parent="." index="7"]
+modulate = Color(0.866667, 0.866667, 0.866667, 1)
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAgAAAAEAAgAAAAAAAgABAAIAAgAAAAAAAgABAAMAAgAAAAAAAgACAAQAAgAAAAAAAgACAAUAAgAAAAAAAgADAAYAAgAAAAAAAgADAAcAAgAAAAAAAgAEAAgAAgAAAAAAAgAEAAkAAgAAAAAAAgAFAAoAAgAAAAAAAgAFAAsAAgAAAAAAAgAGAAwAAgAAAAAAAgA=")
+
+[node name="TargetBlock" parent="TargetBlocks" index="0" instance=ExtResource("6_kaxm4")]
+position = Vector2(70, 64)
+
+[node name="TargetBlock2" parent="TargetBlocks" index="1" instance=ExtResource("6_kaxm4")]
+position = Vector2(84, 88)
+
+[node name="StartPosMarker" parent="." index="10"]
+position = Vector2(0, 148)
+
+[node name="MagneticBlock" parent="MagneticBlocks" index="0" instance=ExtResource("2_kstfd")]
+power = 1000.0
+
+[node name="PullParticles" parent="MagneticBlocks/MagneticBlock" index="0" instance=ExtResource("3_k1ym2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagneticBlocks/MagneticBlock" index="1"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_1n7rd")
+
+[node name="HealthHelper" parent="HealthHelpers" index="0" instance=ExtResource("5_set52")]
+position = Vector2(-120, -142)
+hp = 100.0
+
+[node name="HealthHelper2" parent="HealthHelpers" index="1" instance=ExtResource("5_set52")]
+position = Vector2(-73, -170)
+hp = 100.0

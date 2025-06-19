@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://3qmdav4uxxy1"]
+
+[ext_resource type="Texture2D" uid="uid://d4mg5ki56b7n6" path="res://assets/hexagon.png" id="1_jgnu0"]
+[ext_resource type="Script" uid="uid://dpvl6iokawc45" path="res://scenes/UI/StopButton/stop_button.gd" id="2_adrcc"]
+[ext_resource type="FontFile" uid="uid://bka8tcryaxc2v" path="res://assets/fonts/static/RobotoMono-Medium.ttf" id="2_kghr0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kghr0"]
+texture = ExtResource("1_jgnu0")
+
+[node name="StopButton" type="Panel"]
+custom_minimum_size = Vector2(299, 257)
+offset_right = 147.0
+offset_bottom = 84.0
+scale = Vector2(0.33, 0.33)
+theme_override_styles/panel = SubResource("StyleBoxTexture_kghr0")
+script = ExtResource("2_adrcc")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.015
+offset_top = -104.258
+offset_right = 85.9848
+offset_bottom = 92.7424
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_kghr0")
+theme_override_font_sizes/font_size = 40
+text = "STOP"
+flat = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ch4lgknxx7"]
+
+[ext_resource type="Script" uid="uid://drc52j0cs7v26" path="res://scenes/levels/level_base/Player/player.gd" id="1_1kbk7"]
+[ext_resource type="PackedScene" uid="uid://gk1dugcrfg63" path="res://scenes/Fire/fire.tscn" id="1_cyojo"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_1kbk7")
+
+[node name="Fire" parent="." instance=ExtResource("1_cyojo")]
+scale = Vector2(1, 1)

@@ -1,0 +1,203 @@
+[gd_scene load_steps=23 format=3 uid="uid://by6c2sdr7dcpm"]
+
+[ext_resource type="Script" uid="uid://cka58pwrg70mu" path="res://scenes/levels/level_base/level_base.gd" id="1_ev6ua"]
+[ext_resource type="PackedScene" uid="uid://c0nek5832gd4q" path="res://scenes/UI/StopPage/stop_page.tscn" id="2_8vbyc"]
+[ext_resource type="PackedScene" uid="uid://1ch4lgknxx7" path="res://scenes/levels/level_base/Player/player.tscn" id="2_ev6ua"]
+[ext_resource type="PackedScene" uid="uid://3qmdav4uxxy1" path="res://scenes/UI/StopButton/stop_button.tscn" id="2_vscg6"]
+[ext_resource type="Script" uid="uid://16isw7odmeep" path="res://scenes/levels/level_base/world_boundaries.gd" id="3_oqir5"]
+[ext_resource type="Texture2D" uid="uid://bcik4tx4y6gwv" path="res://assets/fire/circle.png" id="5_3xmpf"]
+[ext_resource type="Texture2D" uid="uid://bndm7218wbxap" path="res://assets/arrow/arrow.png" id="5_5k0vf"]
+[ext_resource type="Texture2D" uid="uid://0yxwpf0trmw6" path="res://assets/block/block.png" id="5_kl56l"]
+[ext_resource type="PackedScene" uid="uid://b86fsbj1j1r64" path="res://scenes/KillingBlock/killing_block.tscn" id="5_v2n4u"]
+[ext_resource type="FontFile" uid="uid://bvwogojsnqt4x" path="res://assets/fonts/static/RobotoMono-Regular.ttf" id="6_3xmpf"]
+[ext_resource type="Script" uid="uid://dkeourj4w4sup" path="res://scenes/levels/level_base/target_blocks.gd" id="8_envh0"]
+[ext_resource type="Script" uid="uid://bbyom7coc0nsl" path="res://scenes/levels/level_base/world_environment.gd" id="12_rd1ld"]
+[ext_resource type="AudioStream" uid="uid://bla5qoskx65yn" path="res://assets/fire_default/fire-sound.mp3" id="13_2ejs5"]
+[ext_resource type="AudioStream" uid="uid://cwqu8n700c5q6" path="res://assets/fire_default/win.mp3" id="14_o2s5d"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oqir5"]
+normal = Vector2(2.53518e-06, -1)
+distance = -49.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kl56l"]
+texture = ExtResource("5_kl56l")
+margins = Vector2i(19, 32)
+texture_region_size = Vector2i(257, 299)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -149.5, -128.5, -74.75, -128.5, 74.75, 0, 149.5, 128.5, 74.75, 128.5, -74.75)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_vscg6"]
+scenes/2/scene = ExtResource("5_v2n4u")
+
+[sub_resource type="TileSet" id="TileSet_3xmpf"]
+tile_shape = 3
+tile_size = Vector2i(257, 299)
+physics_layer_0/collision_layer = 2
+sources/1 = SubResource("TileSetAtlasSource_kl56l")
+sources/2 = SubResource("TileSetScenesCollectionSource_vscg6")
+
+[sub_resource type="Curve" id="Curve_kl56l"]
+_data = [Vector2(0, 0.975904), 0.0, 0.0, 0, 0, Vector2(1, 0.240964), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3xmpf"]
+curve = SubResource("Curve_kl56l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oqir5"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 135.0
+initial_velocity_min = 2.88
+initial_velocity_max = 304.36
+gravity = Vector3(0, 170, 0)
+scale_curve = SubResource("CurveTexture_3xmpf")
+
+[sub_resource type="Environment" id="Environment_rd1ld"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 1
+adjustment_contrast = 1.06
+
+[node name="LevelBase" type="Node2D" node_paths=PackedStringArray("start_pos")]
+modulate = Color(3.65794e-06, 0.633999, 0.575755, 1)
+script = ExtResource("1_ev6ua")
+start_pos = NodePath("StartPosMarker")
+
+[node name="BG" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -942.0
+offset_top = -711.0
+offset_right = 978.0
+offset_bottom = 369.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.340339, 0.340339, 0.340339, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_ev6ua")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="StopPage" parent="Camera2D" instance=ExtResource("2_8vbyc")]
+visible = false
+z_index = 100
+
+[node name="StopButton" parent="Camera2D" instance=ExtResource("2_vscg6")]
+z_index = 100
+offset_left = -442.0
+offset_top = -236.0
+offset_right = -203.0
+offset_bottom = -88.0
+
+[node name="WorldBoundaries" type="Area2D" parent="."]
+collision_layer = 8
+script = ExtResource("3_oqir5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(0, -160)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_oqir5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(0, 160)
+shape = SubResource("WorldBoundaryShape2D_oqir5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(287.87, 0)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_oqir5")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBoundaries"]
+position = Vector2(-287.87, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_oqir5")
+
+[node name="SplitAreas" type="Node2D" parent="."]
+
+[node name="BounceBlocks" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(0.11, 0.11)
+tile_set = SubResource("TileSet_3xmpf")
+
+[node name="TargetBlocks" type="Node2D" parent="."]
+script = ExtResource("8_envh0")
+
+[node name="DirectionLine2D" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(-139, -2, 130, 97)
+width = 5.0
+
+[node name="Arrow" type="Sprite2D" parent="DirectionLine2D"]
+position = Vector2(54, -36)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_5k0vf")
+
+[node name="StartPosMarker" type="Marker2D" parent="."]
+position = Vector2(-125, 60)
+
+[node name="LosingTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="WinningParticles" type="GPUParticles2D" parent="."]
+z_index = 10
+emitting = false
+amount = 16
+texture = ExtResource("5_3xmpf")
+one_shot = true
+explosiveness = 1.0
+visibility_rect = Rect2(-300, -300, 600, 600)
+process_material = SubResource("ParticleProcessMaterial_oqir5")
+
+[node name="DegreesLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 61.05
+offset_top = -59.85
+offset_right = 101.05
+offset_bottom = -30.885
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("6_3xmpf")
+theme_override_font_sizes/font_size = 25
+
+[node name="MagneticBlocks" type="Node2D" parent="."]
+
+[node name="HealthHelpers" type="Node2D" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rd1ld")
+script = ExtResource("12_rd1ld")
+
+[node name="FireSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_2ejs5")
+volume_db = -19.539
+autoplay = true
+parameters/looping = true
+
+[node name="WinningSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_o2s5d")
+volume_db = 1.261
+pitch_scale = 1.1
+
+[connection signal="resume" from="Camera2D/StopPage" to="." method="_on_stop_page_resume"]
+[connection signal="pause_button" from="Camera2D/StopButton" to="." method="_on_stop_button_pause_button"]
+[connection signal="timeout" from="LosingTimer" to="." method="_on_losing_timer_timeout"]
+[connection signal="finished" from="WinningParticles" to="." method="_on_winning_particles_finished"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

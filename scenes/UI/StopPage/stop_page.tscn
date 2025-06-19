@@ -1,0 +1,160 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0nek5832gd4q"]
+
+[ext_resource type="Texture2D" uid="uid://d4mg5ki56b7n6" path="res://assets/hexagon.png" id="1_cmq5x"]
+[ext_resource type="Script" uid="uid://crer6v2o51kj1" path="res://scenes/UI/StopPage/stop_page.gd" id="1_vofo4"]
+[ext_resource type="FontFile" uid="uid://bka8tcryaxc2v" path="res://assets/fonts/static/RobotoMono-Medium.ttf" id="2_3r572"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3r572"]
+texture = ExtResource("1_cmq5x")
+
+[node name="StopPage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vofo4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2000.0
+offset_top = -2000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.137, 0.137, 0.137, 0.913)
+
+[node name="Control" type="Control" parent="."]
+z_index = 100
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 9.0
+offset_top = -19.0
+offset_right = 49.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="Panel" type="Panel" parent="Control"]
+custom_minimum_size = Vector2(299, 257)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -66.0
+offset_right = 216.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_styles/panel = SubResource("StyleBoxTexture_3r572")
+
+[node name="Button" type="Button" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = -88.5
+offset_right = 90.5
+offset_bottom = 83.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_3r572")
+theme_override_font_sizes/font_size = 36
+text = "RESUME"
+flat = true
+
+[node name="Panel2" type="Panel" parent="Control"]
+custom_minimum_size = Vector2(299, 257)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -37.0
+offset_right = 267.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_styles/panel = SubResource("StyleBoxTexture_3r572")
+
+[node name="Button2" type="Button" parent="Control/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.5
+offset_top = -88.5
+offset_right = 94.5
+offset_bottom = 75.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_3r572")
+theme_override_font_sizes/font_size = 36
+text = "REPLAY"
+flat = true
+
+[node name="Panel3" type="Panel" parent="Control"]
+custom_minimum_size = Vector2(299, 257)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -8.0
+offset_right = 216.0
+offset_bottom = 249.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_styles/panel = SubResource("StyleBoxTexture_3r572")
+
+[node name="Button3" type="Button" parent="Control/Panel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.5
+offset_top = -88.5
+offset_right = 90.5
+offset_bottom = 83.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_3r572")
+theme_override_font_sizes/font_size = 36
+text = "MENU"
+flat = true
+
+[connection signal="button_down" from="Control/Panel/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Control/Panel2/Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="Control/Panel3/Button3" to="." method="_on_button_3_button_down"]
